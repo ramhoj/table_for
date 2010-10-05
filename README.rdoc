@@ -1,22 +1,22 @@
 = TableFor
 
-  Renders a table for your model collection.
-  Like show_for, but for collections...
+Renders a table for your model collection.
+Like show_for, but for collections...
 
 == Disclaimer
 
-  Should not be considered stable.
-  Briefly tested under rails 3 running ruby 1.8.7 and 1.9.2
-  Test coverage not yet up to speed.
+Should not be considered stable.
+Briefly tested under rails 3 running ruby 1.8.7 and 1.9.2
+Test coverage not yet up to speed.
 
 == Installation
 
- Add the below line to your gem file and run bundle install
- gem 'table_for'
+Add the below line to your gem file and run bundle install
+gem 'table_for'
 
 == Basic Usage
 
-  # In your erb views:
+In your erb views:
   <%= table_for Product, @products do |table| %>
     <%= table.head :name, :size, :description, :price %>
     <%= table.body do |row| %>
@@ -29,7 +29,7 @@
     <% end %>
   <% end %>
 
-  # Or: 
+Or: 
   <%= table_for Product, @products do |table| %>
     <%= table.columns :name, :size, :description, :price %>
     <%= table.foot do %>
@@ -39,6 +39,6 @@
 
 == Credits and contributors
 
-  * Jonas Nicklas (jnicklas) who actually wrote most of the code while we pair-programmed.
-  * Elabs for sponsoring with development time.
-  * The authors of the show_for gem for providing the inspiration.
+* Jonas Nicklas (jnicklas) who actually wrote most of the code while we pair-programmed.
+* Elabs for sponsoring with development time.
+* The authors of the show_for gem for providing the inspiration.
