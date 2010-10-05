@@ -10,7 +10,7 @@
 
 == Installation
 
- Add the below line to your gem file
+ Add the below line to your gem file and run bundle install
  gem 'table_for'
 
 == Basic Usage
