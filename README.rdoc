@@ -12,7 +12,7 @@ Test coverage not yet up to speed.
 == Installation
 
 Add the below line to your gem file and run bundle install
-gem 'table_for'
+  gem 'table_for'
 
 == Basic Usage
 
