@@ -38,6 +38,6 @@
 
 == Credits and contributors
 
-  * Jonas Nicklas (jnickals) who actually wrote mote of the code while we pair-programmed.
-  * Elabs for sponsoring with development time
-  * The authors of show_for for providing the inspiration.
+  * Jonas Nicklas (jnickals) who actually wrote most of the code while we pair-programmed.
+  * Elabs for sponsoring with development time.
+  * The authors of the show_for gem for providing the inspiration.
