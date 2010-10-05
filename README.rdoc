@@ -39,6 +39,6 @@
 
 == Credits and contributors
 
-  * Jonas Nicklas (jnickals) who actually wrote most of the code while we pair-programmed.
+  * Jonas Nicklas (jnicklas) who actually wrote most of the code while we pair-programmed.
   * Elabs for sponsoring with development time.
   * The authors of the show_for gem for providing the inspiration.
