@@ -4,8 +4,7 @@ module TableFor
     #
     # Examples:
     #
-    # <tt>
-    # table_for Product, @products do |table|
+    # <tt>table_for Product, @products do |table|
     #   table.head :name, :size, :description, :price
     #   table.body do |row|
     #     row.cell :name
@@ -15,17 +14,14 @@ module TableFor
     #   table.foot do
     #     link_to "Add product", new_product_path
     #   end
-    # end
-    # </tt>
+    # end</tt>
     #
-    # <tt>
-    # table_for Product, @products do |table|
+    # <tt>table_for Product, @products do |table|
     #   table.columns :name, :size, :description, :price
     #   table.foot do
     #     link_to "Add product", new_product_path
     #   end
-    # end
-    # </tt>
+    # end</tt>
     #
     # Returns:
     #
