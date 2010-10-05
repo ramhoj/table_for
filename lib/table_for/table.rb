@@ -3,10 +3,6 @@ module TableFor
     attr_accessor :columns, :rows
     delegate :capture, :content_tag, :to => :template
 
-    def human_association_name
-      model_class.model_name.human.pluralize
-    end
-
     def human_column_names
       columns.map { |column| model_class.human_attribute_name(column) }
     end
@@ -17,8 +13,18 @@ module TableFor
 
     def render
       content_tag(:table, :class => 'list') do
-        content_tag(:caption, human_association_name) + capture(TableBuilder.new(self), &block)
+        caption + capture(TableBuilder.new(self), &block)
       end
+    end
+
+  protected
+
+    def caption
+      content_tag(:caption, human_association_name)
+    end
+
+    def human_association_name
+      model_class.model_name.human.pluralize
     end
   end
 end
