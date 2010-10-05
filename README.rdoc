@@ -1,0 +1,42 @@
+== TableFor
+
+  Renders a table for your model collection.
+  Like show_for, but for collections...
+
+== Disclaimer
+
+  Should not be considered stable at all this point.
+  (The gem have no specs! OMG!)
+
+== Installation
+
+ gem install table_for
+
+== Basic Usage
+
+  # In your erb views:
+  <%= table_for Product, @products do |table| %>
+    <%= table.head :name, :size, :description, :price %>
+    <%= table.body do |row| %>
+      <%= row.cell :name %>
+      <%= row.cells :size, :description %>
+      <%= row.cell number_to_currency(row.record.price) %>
+    <% end %>
+    <%= table.foot do %>
+      <%= link_to "Add product", new_product_path %>
+    <% end %>
+  <% end %>
+
+  # Or: 
+  <%= table_for Product, @products do |table| %>
+    <%= table.columns :name, :size, :description, :price %>
+    <%= table.foot do %>
+      <%= link_to "Add product", new_product_path %>
+    <% end %>
+  <% end %>
+
+== Credits and contributors
+
+  * Jonas Nicklas (jnickals) who actually wrote mote of the code while we pair-programmed.
+  * Elabs for sponsoring with development time
+  * The authors of show_for for providing the inspiration.
