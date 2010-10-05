@@ -6,11 +6,12 @@
 == Disclaimer
 
   Should not be considered stable at all this point.
-  (The gem have no specs! OMG!)
+  (The gem have no specs! OMG! 0nly manually tested under rails 3 and ruby 1.9.2)
 
 == Installation
 
- gem install table_for
+ Add the below line to your gem file
+ gem 'table_for'
 
 == Basic Usage
 
