@@ -1,7 +1,7 @@
 module TableFor
   class TableBuilder < Struct.new(:table)
     delegate :template, :human_column_names, :to => :table
-    delegate :capture, :content_tag, :admin?, :to => :template
+    delegate :capture, :content_tag, :to => :template
 
     def columns(*columns)
       head(*columns) + body(*columns)
@@ -35,6 +35,11 @@ module TableFor
           end
         end.html_safe
       end
+    end
+
+    def admin?
+      return true unless template.respond_to?(:admin?)
+      template.admin?
     end
   end
 end

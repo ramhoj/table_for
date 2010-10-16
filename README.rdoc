@@ -37,6 +37,8 @@ Or:
     <% end %>
   <% end %>
 
+The footer if not shown if there is the view helper "admin?" is defined and returns false.
+
 == Credits and contributors
 
 * Jonas Nicklas (jnicklas) who actually wrote most of the code while we pair-programmed.
