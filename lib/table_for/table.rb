@@ -1,5 +1,5 @@
 module TableFor
-  class Table < Struct.new(:template, :model_class, :records, :block)
+  class Table < Struct.new(:template, :model_class, :records, :html, :block)
     attr_accessor :columns, :rows
     delegate :capture, :content_tag, :to => :template
 
@@ -12,12 +12,20 @@ module TableFor
     end
 
     def render
-      content_tag(:table, :class => 'list') do
+      content_tag(:table, :class => css_class) do
         caption + capture(TableBuilder.new(self), &block)
       end
     end
 
   protected
+
+    def css_class
+      [human_association_name.downcase, 'list', extra_css_class].compact
+    end
+
+    def extra_css_class
+      if html[:class].is_a?(String) then html[:class].split else html[:class] end
+    end
 
     def caption
       content_tag(:caption, human_association_name)

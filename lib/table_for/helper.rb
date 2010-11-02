@@ -29,8 +29,8 @@ module TableFor
     #
     # (Call this method from your erb templates by wrapping each line in <%= %> or <% %>)
 
-    def table_for(model_class, records, &block)
-      Table.new(self, model_class, records, block).render
+    def table_for(model_class, records, html = {}, &block)
+      Table.new(self, model_class, records, html, block).render
     end
   end
 end
