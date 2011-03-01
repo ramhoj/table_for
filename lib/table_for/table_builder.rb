@@ -12,9 +12,9 @@ module TableFor
 
       content_tag(:thead) do
         content_tag(:tr) do
-          human_column_names.map { |column| content_tag(:th, column) }.join
+          human_column_names.map { |column| content_tag(:th, column) }.join.html_safe
         end
-      end.html_safe
+      end
     end
 
     def body(*columns, &block)
