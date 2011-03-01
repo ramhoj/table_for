@@ -20,26 +20,23 @@ module TableFor
     def body(*columns, &block)
       content_tag(:tbody) do
         table.row_builders.map do |builder|
-          content_tag(:tr) do
-            if block then capture(builder, &block) else builder.cells(*columns) end
+          if TableFor.row_filter.call(table, builder.record)
+            content_tag(:tr) do
+              if block then capture(builder, &block) else builder.cells(*columns) end
+            end
           end
-        end.join.html_safe
+        end.compact.join.html_safe
       end
     end
 
     def foot(&block)
-      if admin?
+      if TableFor.footer_filter.call(table)
         content_tag(:tfoot) do
           content_tag(:tr) do
             content_tag(:td, capture(&block), :colspan => table.columns.size)
           end
         end.html_safe
       end
-    end
-
-    def admin?
-      return true unless template.respond_to?(:admin?)
-      template.admin?
     end
   end
 end

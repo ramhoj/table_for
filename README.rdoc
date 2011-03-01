@@ -37,7 +37,7 @@ Or:
     <% end %>
   <% end %>
 
-The footer if not shown if there is the view helper "admin?" is defined and returns false.
+The footer and rows can be filtered out through the TableFor.footer_filter/row_filter methods.
 
 == Credits and contributors
 
