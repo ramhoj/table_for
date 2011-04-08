@@ -1,5 +1,12 @@
 module TestTableFor
-  class User < Struct.new(:first_name, :last_name)
+  class User
+    attr_accessor :first_name, :last_name
+
+    def initialize(attributes = {})
+      @first_name = attributes[:first_name]
+      @last_name = attributes[:last_name]
+    end
+
     class << self
       def human_attribute_name(attribute)
         attribute.to_s.humanize
