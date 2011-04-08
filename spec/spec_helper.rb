@@ -8,3 +8,4 @@ require 'bundler/setup'
 require "rails/test_help"
 require 'table_for'
 require 'support/user'
+require 'capybara'

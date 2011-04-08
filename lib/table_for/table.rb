@@ -12,9 +12,10 @@ module TableFor
     end
 
     def render
-      content_tag(:table, :class => css_class) do
-        caption + capture(TableBuilder.new(self), &block)
-      end
+      builder = TableBuilder.new(self)
+      body = if block_given? then capture(builder, &block) else builder end
+
+      content_tag(:table, caption + body, :class => css_class)
     end
 
   protected
