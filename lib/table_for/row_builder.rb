@@ -7,8 +7,8 @@ module TableFor
       values.map { |v| cell(v) }.join.html_safe
     end
 
-    def cell(value)
-      content_tag(:td) do
+    def cell(value, options={})
+      content_tag(:td, options) do
         if value.is_a?(Symbol) then record.send(value).to_s else value.to_s end
       end
     end
