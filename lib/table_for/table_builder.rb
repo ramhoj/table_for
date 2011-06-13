@@ -29,11 +29,15 @@ module TableFor
       end
     end
 
-    def foot(&block)
+    def foot(options={}, &block)
       if TableFor.footer_filter.call(table)
         content_tag(:tfoot) do
           content_tag(:tr) do
-            content_tag(:td, capture(&block), :colspan => table.columns.size)
+            if options[:align] == :right
+              content_tag(:td, "", :colspan => table.columns.size - 1) + content_tag(:td, capture(&block))
+            else
+              content_tag(:td, capture(&block), :colspan => table.columns.size)
+            end
           end
         end.html_safe
       end
