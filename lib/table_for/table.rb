@@ -13,7 +13,7 @@ module TableFor
 
     def render
       builder = TableBuilder.new(self)
-      body = if block_given? then capture(builder, &block) else builder end
+      body = if block then capture(builder, &block) else builder end
 
       content_tag(:table, caption + body, :class => css_class)
     end
