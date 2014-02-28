@@ -25,5 +25,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rspec", [">= 2.0.0.beta.20"])
   s.add_development_dependency("capybara")
 
-  s.add_dependency("rails", ["~> 3.0"])
+  s.add_dependency("rails", [">= 3.0"])
 end
