@@ -10,37 +10,37 @@ describe TableFor::TableBuilder do
   let(:table_builder) { TableFor::TableBuilder.new(table) }
 
   describe "#head" do
-    subject { Capybara.string(table_builder.head(:name, :age)) }
+    let(:html) { Capybara.string(table_builder.head(:name, :age)) }
 
     it "renders a thead with the header rows" do
-      should have_css "thead tr", :text => "Name"
-      should have_css "thead tr", :text => "Age"
+      expect(html).to have_css "thead tr", :text => "Name"
+      expect(html).to have_css "thead tr", :text => "Age"
     end
   end
 
   describe "#body" do
-    subject { Capybara.string(table_builder.body(:first_name, :last_name)) }
+    let(:html) { Capybara.string(table_builder.body(:first_name, :last_name)) }
 
     context "when the filter passes" do
       it "returns a tbody with the table rows" do
-        should have_css "tbody tr", :text => "Nicklas"
-        should have_css "tbody tr", :text => "Ramhöj"
-        should have_css "tbody tr", :text => "Jonas"
+        expect(html).to have_css "tbody tr", :text => "Nicklas"
+        expect(html).to have_css "tbody tr", :text => "Ramhöj"
+        expect(html).to have_css "tbody tr", :text => "Jonas"
       end
     end
   end
 
   describe "foot" do
-    subject { Capybara.string(table_builder.foot { "footer content" }) }
-    before { table.stub(:columns).and_return([:first_name, :last_name]) }
+    let(:html) { Capybara.string(table_builder.foot { "footer content" }) }
+    before { allow(table).to receive(:columns).and_return([:first_name, :last_name]) }
 
     context "when the filter passes" do
       it "returns a tfoot with the table rows" do
-        should have_css "tfoot tr td", :text => "footer content"
+        expect(html).to have_css "tfoot tr td", :text => "footer content"
       end
 
       it "returns sets a colspans equal to the number of columns" do
-        should have_css "tfoot tr td[colspan='2']"
+        expect(html).to have_css "tfoot tr td[colspan='2']"
       end
     end
   end

@@ -1,3 +1,5 @@
+require "action_view"
+
 module TableFor
   module Helper
     # Create a html table for records, using model class for naming things.
