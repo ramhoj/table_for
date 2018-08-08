@@ -37,4 +37,4 @@ module TableFor
   end
 end
 
-ActionView::Base.send :include, TableFor::Helper
+ActionView::Base.send(:include, TableFor::Helper)

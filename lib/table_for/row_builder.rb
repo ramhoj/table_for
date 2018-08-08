@@ -1,7 +1,7 @@
 module TableFor
   class RowBuilder < Struct.new(:table, :record)
-    delegate :template, :to => :table
-    delegate :content_tag, :to => :template
+    delegate :template, to: :table
+    delegate :content_tag, to: :template
 
     def cells(*values)
       values.map { |v| cell(v) }.join.html_safe

@@ -12,7 +12,7 @@ Test coverage not complete.
 == Installation
 
 Add the below line to your gem file and run bundle install
-  gem 'table_for'
+  gem "table_for"
 
 == Basic Usage
 
@@ -38,6 +38,10 @@ Or:
   <% end %>
 
 The footer and rows can be filtered out through the TableFor.footer_filter/row_filter methods.
+
+== Development
+
+Install with `bundle install` and run test with `bundle exec rspec`
 
 == Credits and contributors
 

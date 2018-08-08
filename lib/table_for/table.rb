@@ -1,7 +1,7 @@
 module TableFor
   class Table < Struct.new(:template, :model_class, :records, :html, :block)
     attr_accessor :columns, :rows
-    delegate :capture, :content_tag, :to => :template
+    delegate :capture, :content_tag, to: :template
 
     def human_column_names
       columns.map { |column| model_class.human_attribute_name(column) }
@@ -15,13 +15,13 @@ module TableFor
       builder = TableBuilder.new(self)
       body = if block then capture(builder, &block) else builder end
 
-      content_tag(:table, caption + body, :class => css_class)
+      content_tag(:table, caption + body, class: css_class)
     end
 
   protected
 
     def css_class
-      [human_association_name.downcase, 'list', extra_css_class].compact
+      [human_association_name.downcase, "list", extra_css_class].compact
     end
 
     def extra_css_class

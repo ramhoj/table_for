@@ -1,10 +1,10 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe TableFor::Table do
   let(:template) { ActionView::Base.new }
   let(:users) do
-    [TestTableFor::User.new(:first_name => "Nicklas", :last_name => "Ramhöj"),
-     TestTableFor::User.new(:first_name => "Jonas", :last_name => "Nicklas")]
+    [TestTableFor::User.new(first_name: "Nicklas", last_name: "Ramhöj"),
+     TestTableFor::User.new(first_name: "Jonas", last_name: "Nicklas")]
   end
   let(:func) { ->(*args) {} }
   let(:table) { TableFor::Table.new(template, TestTableFor::User, users, func) }
@@ -24,7 +24,7 @@ describe TableFor::Table do
 
   describe "#render" do
     it "wrapps the caption, header, body and footer in a table tag" do
-      expect(Capybara.string(table.render)).to have_css "table.list caption", :text => "Users"
+      expect(Capybara.string(table.render)).to have_css("table.list caption", text: "Users")
     end
   end
 end

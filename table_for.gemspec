@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
-lib = File.expand_path('../lib/', __FILE__)
+lib = File.expand_path("../lib/", __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
-require 'table_for/version'
+require "table_for/version"
 
 Gem::Specification.new do |s|
   s.name = "table_for"
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir.glob("{lib,spec}/**/*") + %w(README.rdoc)
   s.extra_rdoc_files = ["README.rdoc"]
 
-  s.homepage = "http://github.com/ramhoj/table_for"
+  s.homepage = "https://github.com/ramhoj/table_for"
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
   s.summary = "Renders a table for your model collection"

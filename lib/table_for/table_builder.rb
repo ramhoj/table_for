@@ -1,7 +1,7 @@
 module TableFor
   class TableBuilder < Struct.new(:table)
-    delegate :template, :human_column_names, :to => :table
-    delegate :capture, :content_tag, :to => :template
+    delegate :template, :human_column_names, to: :table
+    delegate :capture, :content_tag, to: :template
 
     def columns(*columns)
       head(*columns) + body(*columns)
@@ -34,9 +34,9 @@ module TableFor
         content_tag(:tfoot) do
           content_tag(:tr) do
             if options[:align] == :right
-              content_tag(:td, "", :colspan => table.columns.size - 1) + content_tag(:td, capture(&block))
+              content_tag(:td, "", colspan: table.columns.size - 1) + content_tag(:td, capture(&block))
             else
-              content_tag(:td, capture(&block), :colspan => table.columns.size)
+              content_tag(:td, capture(&block), colspan: table.columns.size)
             end
           end
         end.html_safe
