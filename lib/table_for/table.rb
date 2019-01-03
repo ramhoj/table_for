@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TableFor
   class Table < Struct.new(:template, :model_class, :records, :html, :block)
     attr_accessor :columns, :rows
@@ -13,19 +15,19 @@ module TableFor
 
     def render
       builder = TableBuilder.new(self)
-      body = if block then capture(builder, &block) else builder end
+      body = block ? capture(builder, &block) : builder
 
       content_tag(:table, caption + body, class: css_class)
     end
 
-  protected
+    protected
 
     def css_class
       [human_association_name.downcase, "list", extra_css_class].compact
     end
 
     def extra_css_class
-      if html[:class].is_a?(String) then html[:class].split else html[:class] end
+      html[:class].is_a?(String) ? html[:class].split : html[:class]
     end
 
     def caption

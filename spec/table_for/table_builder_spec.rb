@@ -1,12 +1,16 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 describe TableFor::TableBuilder do
   let(:template) { ActionView::Base.new }
   let(:users) do
-    [TestTableFor::User.new(first_name: "Nicklas", last_name: "Ramhöj"),
-     TestTableFor::User.new(first_name: "Jonas", last_name: "Nicklas")]
+    [
+TestTableFor::User.new(first_name: "Nicklas", last_name: "Ramhöj"),
+TestTableFor::User.new(first_name: "Jonas", last_name: "Nicklas")
+]
   end
-  let(:table) { TableFor::Table.new(template, TestTableFor::User, users, lambda { "content" }) }
+  let(:table) { TableFor::Table.new(template, TestTableFor::User, users, -> { "content" }) }
   let(:table_builder) { TableFor::TableBuilder.new(table) }
 
   describe "#head" do
@@ -32,7 +36,8 @@ describe TableFor::TableBuilder do
 
   describe "foot" do
     let(:html) { Capybara.string(table_builder.foot { "footer content" }) }
-    before { allow(table).to receive(:columns).and_return([:first_name, :last_name]) }
+
+    before { allow(table).to receive(:columns).and_return(%i[first_name last_name]) }
 
     context "when the filter passes" do
       it "returns a tfoot with the table rows" do

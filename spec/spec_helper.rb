@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 ENV["RAILS_ENV"] = "test"
 
-$:.unshift File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift File.expand_path("lib", __dir__)
 
 require "rails"
 require "rubygems"
