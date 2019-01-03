@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TableFor
   class RowBuilder < Struct.new(:table, :record)
     delegate :template, to: :table
@@ -7,9 +9,9 @@ module TableFor
       values.map { |v| cell(v) }.join.html_safe
     end
 
-    def cell(value, options={})
+    def cell(value, options = {})
       content_tag(:td, options) do
-        if value.is_a?(Symbol) then record.send(value).to_s else value.to_s end
+        value.is_a?(Symbol) ? record.send(value).to_s : value.to_s
       end
     end
   end

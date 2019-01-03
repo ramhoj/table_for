@@ -6,7 +6,7 @@ Like show_for, but for collections...
 == Disclaimer
 
 Should not be considered stable.
-Briefly tested under Rails 3 running Ruby 1.8.7 and 1.9.2 and recently updated to pass tests on Ruby 2.5.0 and Rails 5
+Briefly tested under Rails 3 running Ruby 1.8.7 and 1.9.2 and recently updated to pass tests on Ruby 2.6.0 and Rails 5
 Test coverage not complete.
 
 == Installation

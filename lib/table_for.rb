@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "table_for/helper"
 
 module TableFor
@@ -18,5 +20,5 @@ module TableFor
   end
 end
 
-TableFor.footer_filter { |table| true }
-TableFor.row_filter    { |table, record| true }
+TableFor.footer_filter { |_table| true }
+TableFor.row_filter    { |_table, _record| true }

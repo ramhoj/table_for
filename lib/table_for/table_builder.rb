@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TableFor
   class TableBuilder < Struct.new(:table)
     delegate :template, :human_column_names, to: :table
@@ -20,16 +22,16 @@ module TableFor
     def body(*columns, &block)
       content_tag(:tbody) do
         table.row_builders.map do |builder|
-          if TableFor.row_filter.call(table, builder.record)
-            content_tag(:tr) do
-              if block then capture(builder, &block) else builder.cells(*columns) end
-            end
+          next unless TableFor.row_filter.call(table, builder.record)
+
+          content_tag(:tr) do
+            block ? capture(builder, &block) : builder.cells(*columns)
           end
         end.compact.join.html_safe
       end
     end
 
-    def foot(options={}, &block)
+    def foot(options = {}, &block)
       if TableFor.footer_filter.call(table)
         content_tag(:tfoot) do
           content_tag(:tr) do
