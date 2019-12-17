@@ -3,12 +3,14 @@
 require "spec_helper"
 
 describe TableFor::TableBuilder do
-  let(:template) { ActionView::Base.new }
+  class ArClass < ActionView::Base; end
+  let(:lookup_context) { ActionView::LookupContext.new([]) }
+  let(:template) { ActionView::Base.new(lookup_context) }
   let(:users) do
     [
-TestTableFor::User.new(first_name: "Nicklas", last_name: "Ramhöj"),
-TestTableFor::User.new(first_name: "Jonas", last_name: "Nicklas")
-]
+      TestTableFor::User.new(first_name: "Nicklas", last_name: "Ramhöj"),
+      TestTableFor::User.new(first_name: "Jonas", last_name: "Nicklas")
+    ]
   end
   let(:table) { TableFor::Table.new(template, TestTableFor::User, users, -> { "content" }) }
   let(:table_builder) { TableFor::TableBuilder.new(table) }
